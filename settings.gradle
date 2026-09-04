@@ -1,0 +1,2 @@
+rootProject.name = "InverterMonitor"
+include ':app'

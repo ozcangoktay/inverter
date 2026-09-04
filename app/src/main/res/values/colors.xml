@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#1a1f3d</color>
+    <color name="card_bg">#2d3fa0</color>
+    <color name="row_alt">#26327a</color>
+    <color name="text_primary">#e2e8f7</color>
+    <color name="text_value">#7dd3f0</color>
+    <color name="status_connected">#7dd3f0</color>
+    <color name="status_disconnected">#4ade80</color>
+    <color name="flag_on">#4ade80</color>
+    <color name="btn_connect">#7dd3f0</color>
+    <color name="btn_connect_text">#0c447c</color>
+    <color name="btn_disconnect">#e24b4a</color>
+    <color name="btn_disconnect_text">#501313</color>
+    <color name="new_row_bg">#2e5240</color>
+    <color name="lcd_panel">#0d0f0d</color>
+    <color name="lcd_text">#eeeeee</color>
+    <color name="lcd_muted">#8a8a86</color>
+</resources>

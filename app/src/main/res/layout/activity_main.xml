@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- LCD Paneli -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/lcd_panel_bg"
+            android:padding="12dp">
+
+            <!-- Üst satır: Bluetooth toggle + ATS ... Sıcaklık + Ayarlar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@android:drawable/stat_sys_data_bluetooth"
+                    app:tint="@color/lcd_text" />
+
+                <LinearLayout
+                    android:id="@+id/btToggleContainer"
+                    android:layout_width="40dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="6dp"
+                    android:orientation="horizontal"
+                    android:background="@drawable/toggle_bg">
+
+                    <TextView
+                        android:id="@+id/tvToggleOn"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:background="@color/status_connected"
+                        android:textColor="@color/bg_dark" />
+
+                    <TextView
+                        android:id="@+id/tvToggleOff"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textSize="10sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lcd_muted" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="ATS"
+                    android:textSize="10sp"
+                    android:textColor="@color/lcd_muted" />
+
+                <TextView
+                    android:id="@+id/tvAtsOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="-"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/lcd_text" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    app:tint="@color/lcd_muted" />
+
+                <TextView
+                    android:id="@+id/tvTemp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="- °C"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/lcd_text" />
+
+                <ImageButton
+                    android:id="@+id/btnSettings"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@android:color/transparent"
+                    android:src="@android:drawable/ic_menu_manage"
+                    android:contentDescription="Ayarlar"
+                    app:tint="@color/lcd_text" />
+            </LinearLayout>
+
+            <!-- Bağlantı durumu -->
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="DISCONNECTED"
+                android:textColor="@color/status_disconnected"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:layout_marginBottom="10dp" />
+
+            <!-- 4 Gauge sütunu: PV / Şebeke / Yük / Akü -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="4">
+
+                <!-- PV -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@android:drawable/ic_menu_day"
+                        app:tint="@color/lcd_text" />
+
+                    <LinearLayout
+                        android:id="@+id/chevPv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                    </LinearLayout>
+
+                    <com.inverter.monitor.GaugeView
+                        android:id="@+id/gaugePv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvPvP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="- W"
+                        android:textColor="@color/status_connected"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvPvVA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- V · - A"
+                        android:textColor="@color/lcd_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- ŞEBEKE -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/ic_grid_pylon"
+                        app:tint="@color/lcd_text" />
+
+                    <LinearLayout
+                        android:id="@+id/chevGrid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView style="@style/ChevronText" android:text="▼" />
+                        <TextView style="@style/ChevronText" android:text="▼" />
+                        <TextView style="@style/ChevronText" android:text="▼" />
+                    </LinearLayout>
+
+                    <com.inverter.monitor.GaugeView
+                        android:id="@+id/gaugeGrid"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvGridP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="- W"
+                        android:textColor="@color/status_connected"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvGridVA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- V · - A"
+                        android:textColor="@color/lcd_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- YÜK -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@android:drawable/ic_menu_view"
+                        app:tint="@color/lcd_text" />
+
+                    <LinearLayout
+                        android:id="@+id/chevLoad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                        <TextView style="@style/ChevronText" android:text="▲" />
+                    </LinearLayout>
+
+                    <com.inverter.monitor.GaugeView
+                        android:id="@+id/gaugeLoad"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvLoadP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="- W"
+                        android:textColor="@color/status_connected"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvLoadVA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- V · - A"
+                        android:textColor="@color/lcd_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- AKÜ -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:src="@android:drawable/ic_lock_idle_charging"
+                            app:tint="@color/lcd_text" />
+
+                        <TextView
+                            android:id="@+id/tvAcuSoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:text="%-"
+                            android:textColor="@color/btn_disconnect"
+                            android:textStyle="bold"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/chevAcu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView style="@style/ChevronTextDanger" android:text="▲" />
+                        <TextView style="@style/ChevronTextDanger" android:text="▲" />
+                        <TextView style="@style/ChevronTextDanger" android:text="▲" />
+                    </LinearLayout>
+
+                    <com.inverter.monitor.GaugeView
+                        android:id="@+id/gaugeAcu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/tvAcuP"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-8dp"
+                        android:text="- W"
+                        android:textColor="@color/btn_disconnect"
+                        android:textStyle="bold"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvAcuVA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- V · - A"
+                        android:textColor="@color/lcd_muted"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Durum bayrakları -->
+            <TextView
+                android:id="@+id/tvFlags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@color/row_alt"
+                android:padding="10dp"
+                android:textColor="@color/lcd_text"
+                android:textSize="12sp"
+                android:text="Aktif uyarı yok" />
+
+            <!-- Bağlan / Kes butonları -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="14dp"
+                android:gravity="end">
+
+                <Button
+                    android:id="@+id/btnConnect"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    android:text="Bağlan"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/btn_connect"
+                    android:textColor="@color/btn_connect_text"
+                    android:layout_marginEnd="10dp" />
+
+                <Button
+                    android:id="@+id/btnDisconnect"
+                    android:layout_width="100dp"
+                    android:layout_height="44dp"
+                    android:text="Kes"
+                    android:textAllCaps="false"
+                    android:backgroundTint="@color/btn_disconnect"
+                    android:textColor="@color/btn_disconnect_text" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Geçmiş veri grafiği -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="GÜÇ GEÇMİŞİ (W)"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:paddingStart="4dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="4dp" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/chartHistory"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+    </LinearLayout>
+</ScrollView>

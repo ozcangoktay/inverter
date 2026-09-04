@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/card_bg"
+            android:padding="8dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AYARLAR"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:padding="12dp" />
+
+            <!-- Battery Type -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Battery Type" />
+                <Spinner android:id="@+id/spBatteryType" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Max Charge Current -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Max Charge Current" />
+                <Spinner android:id="@+id/spMaxChargeCurrent" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Output Priority -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Output Priority" />
+                <Spinner android:id="@+id/spOutputPriority" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Charge Priority -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Charge Priority" />
+                <Spinner android:id="@+id/spChargePriority" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Sleep Mode -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Sleep Mode" />
+                <Spinner android:id="@+id/spSleepMode" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Max Grid Charge Current -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Max Grid Charge Current" />
+                <Spinner android:id="@+id/spMaxGridChargeCurrent" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Relay Output -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Relay Output" />
+                <Spinner android:id="@+id/spRelayOutput" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- DOD Disconnect Level -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="DOD Disconnect Level" />
+                <Spinner android:id="@+id/spDodDisconnect" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- DOD Reconnect Level -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="DOD Reconnect Level" />
+                <Spinner android:id="@+id/spDodReconnect" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <!-- Working Mode -->
+            <LinearLayout style="@style/SettingRow">
+                <TextView style="@style/RowLabel" android:text="Working Mode" />
+                <Spinner android:id="@+id/spWorkingMode" style="@style/SettingSpinner" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnApplyAll"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="12dp"
+                android:text="Tümünü Gönder"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/btn_connect"
+                android:textColor="@color/btn_connect_text" />
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginHorizontal="12dp"
+                android:layout_marginBottom="12dp"
+                android:text="Geri"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/row_alt"
+                android:textColor="@color/text_primary" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
