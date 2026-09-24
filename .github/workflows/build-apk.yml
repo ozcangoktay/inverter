@@ -24,7 +24,8 @@ jobs:
         run: |
           mkdir -p "$ANDROID_HOME/cmdline-tools"
           cd "$ANDROID_HOME/cmdline-tools"
-          curl -sSL -o tools.zip https://dl.google.com/android/repo/commandlinetools-linux-11076708_latest.zip
+          curl -f -sSL -o tools.zip https://dl.google.com/android/repository/commandlinetools-linux-15859902_latest.zip
+          ls -la tools.zip
           unzip -q tools.zip
           rm tools.zip
           mv cmdline-tools latest
